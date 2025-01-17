@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "471736860032",
+    "project_id": "react-exam-2",
+    "storage_bucket": "react-exam-2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471736860032:android:596aa2b1b98e457e5f5565",
+        "android_client_info": {
+          "package_name": "com.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8--i9cAFlM9XlaMeUda_gosKDfxVaD-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
