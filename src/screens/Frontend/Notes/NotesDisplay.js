@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     color: '#bbb',
     fontSize: 12,
     fontFamily: 'Poppins-Regular',
-    right:150
+    left:60
 
   },
   Buttons: {

@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import firestore, { collection, getDocs, query, where } from '@react-native-firebase/firestore';
 import { useAuthContext } from './AuthContext';
+import messaging from '@react-native-firebase/messaging';
+import notifee, { AndroidImportance, TriggerType } from '@notifee/react-native';
 
 const TaskContext = createContext();
 
@@ -8,6 +10,32 @@ export default function TaskContextProvider({ children }) {
     const { user } = useAuthContext(); // Get the logged-in user
     const [tasks, setTasks] = useState([]); // State to store tasks
     const [loading, setLoading] = useState(true); // Loading state
+
+
+    const scheduleNotification = async (task) => {
+        const taskDate = new Date(`${task.date}T${task.time}:00`);
+        const trigger = {
+          type: TriggerType.TIMESTAMP,
+          timestamp: taskDate.getTime(), // Time in milliseconds
+        };
+      
+        await notifee.createChannel({
+          id: 'tasks',
+          name: 'Task Notifications',
+          importance: AndroidImportance.HIGH,
+        });
+      
+        await notifee.createTriggerNotification(
+          {
+            title: 'Task Reminder',
+            body: `It's time to start: ${task.title}`,
+            android: {
+              channelId: 'tasks',
+            },
+          },
+          trigger
+        );
+      };
 
     // Function to fetch tasks for the logged-in user
     const getTasks = async () => {
@@ -70,7 +98,7 @@ export default function TaskContextProvider({ children }) {
     }, [user]);
 
     return (
-        <TaskContext.Provider value={{ tasks, getTasks, removeTask, loading, updateTaskStatus }}>
+        <TaskContext.Provider value={{ tasks, getTasks, removeTask, loading, updateTaskStatus, scheduleNotification }}>
             {children}
         </TaskContext.Provider>
     );

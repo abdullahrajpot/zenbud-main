@@ -4,6 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import { useTaskContext } from '../../../contexts/TaskContext';
 import { Button, Menu, Divider } from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
+import Toast from 'react-native-toast-message';
 
 export default function TaskList() {
     const { params } = useRoute();
@@ -24,12 +25,22 @@ export default function TaskList() {
     }, [tasks, status, searchQuery]);
 
     const handleRemoveTask = (taskId) => {
-        removeTask(taskId); // Call the removeTask function from context
+        removeTask(taskId);
+        Toast.show({
+            type: 'success',
+            text2: 'Task has been removed!',
+            visibilityTime: 10000,
+        }); // Call the removeTask function from context
     };
 
     const handleUpdateStatus = (taskId, newStatus) => {
         updateTaskStatus(taskId, newStatus); // Call the updateTaskStatus function from context
         setMenuVisible({ ...menuVisible, [taskId]: false }); // Close the menu
+        Toast.show({
+            type: 'success',
+            text2: 'Status updated!',
+            visibilityTime: 10000,
+        });
     };
 
     const openMenu = (taskId) => {

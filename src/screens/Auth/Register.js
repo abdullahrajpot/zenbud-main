@@ -4,6 +4,7 @@ import { Button, TextInput, Text, IconButton } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 const initialState = { email: '', password: '', number: '', name: '' };
 
@@ -35,11 +36,21 @@ export default function Register() {
 
         // Create the user profile in Firebase Firestore (Optional step)
         createUserProfile(user, name, number);
+        Toast.show({
+          type: 'success',
+          text2: 'User account created',
+          visibilityTime: 20000,
+      });
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
           console.log('That email address is already in use!');
-          alert('Error', 'That email address is already in use!');
+          Toast.show({
+            type: 'error',
+            text2: 'That email address is already in use!',
+            visibilityTime: 20000,
+        });
+          // alert('Error', 'That email address is already in use!');
         }
 
         if (error.code === 'auth/invalid-email') {

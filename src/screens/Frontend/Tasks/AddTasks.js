@@ -5,6 +5,8 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
+import { useTaskContext } from '../../../contexts/TaskContext';
+import Toast from 'react-native-toast-message';
 
 const initialState = { title: '', description: '', category: '', date: '', time: '' };
 
@@ -13,40 +15,54 @@ export default function AddTasks() {
   const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [timePickerVisible, setTimePickerVisible] = useState(false);
   const { user } = useAuthContext();
+  const { scheduleNotification } = useTaskContext();
 
   const handleChange = (name, value) => {
     setState((s) => ({ ...s, [name]: value }));
   };
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     let { title, description, category, date, time } = state;
     title = title.trim();
     description = description.trim();
-
+  
+    if (!title || !date || !time) {
+      console.log('All fields are required.');
+      return;
+    }
+  
     let taskData = { title, description, category, date, time };
     taskData.id = Math.random().toString(36).slice(2);
-    taskData.dateCreated = firebase.firestore.FieldValue.serverTimestamp();
+    taskData.dateCreated = firestore.FieldValue.serverTimestamp();
     taskData.status = 'Pending';
     taskData.createdBy = {
       email: user.email,
       uid: user.uid,
     };
-
-    createDocument(taskData);
+  
+    try {
+      // Add the task to Firestore
+      await firestore().collection('Tasks').add(taskData);
+  
+      // Schedule the notification
+      await scheduleNotification(taskData);
+      Toast.show({
+        type: 'success',
+        text2: 'Task has been added succesfully!',
+        visibilityTime: 10000,
+    });
+  
+      console.log('Task added and notification scheduled successfully');
+    } catch (error) {
+      console.error('Error adding task:', error);
+      Toast.show({
+        type: 'error',
+        text2: 'Error in adding task!',
+        visibilityTime: 10000,
+    });
+    }
   };
-
-  const createDocument = (taskData) => {
-    firestore()
-      .collection('Tasks')
-      .doc(taskData.id)
-      .set(taskData)
-      .then(() => {
-        console.log('Task has been added successfully');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  
 
   const handleDateChange = (event, selectedDate) => {
     setDatePickerVisible(false);

@@ -8,6 +8,7 @@ import {
   Modal,
   FlatList,
 } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 const TimerSetting = ({ route, navigation }) => {
   const { workTime, breakTime, updateTimes } = route.params;
@@ -27,7 +28,12 @@ const TimerSetting = ({ route, navigation }) => {
       updateTimes(work, breakT);
       navigation.goBack();
     } else {
-      alert('Please select valid times!');
+      // alert('Please select valid times!');.
+      Toast.show({
+        type: 'error',
+        text2: 'Please select valid times!',
+        visibilityTime: 10000,
+    });
     }
   };
 

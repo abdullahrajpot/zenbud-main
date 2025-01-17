@@ -208,6 +208,7 @@ import { Button, IconButton, TextInput } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import { useAuthContext } from '../../contexts/AuthContext';
+import Toast from 'react-native-toast-message';
 
 const initialState = { email: '', password: '' };
 
@@ -247,17 +248,31 @@ export default function Login() {
         // Dispatch login action with the authenticated user
         dispatch({ type: 'SET_LOGGED_IN', payload: { user: user } });
 
+        Toast.show({
+          type: 'success',
+          text2: 'User account signed in!',
+          visibilityTime: 20000,
+      });
         // Optional: Navigate to Home after login if needed
         console.log(isAuthenticated);
       })
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
           console.log('That email address is already in use!');
-          alert('Error', 'That email address is already in use!');
+          Toast.show({
+            type: 'error',
+            text2: 'That email address is already in use!',
+            visibilityTime: 20000,
+        });
         }
 
         if (error.code === 'auth/invalid-email') {
           console.log('That email address is invalid!');
+          Toast.show({
+            type: 'error',
+            text2: 'That email address is invalid!',
+            visibilityTime: 20000,
+        });
           alert('Error', 'That email address is invalid!');
         }
 
