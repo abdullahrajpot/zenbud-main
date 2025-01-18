@@ -8,6 +8,8 @@ import {
   ActivityIndicator,
   StyleSheet,
   Image,
+  StatusBar,
+  ImageBackground,
 } from "react-native";
 import axios from "axios";
 import Tts from "react-native-tts";
@@ -87,38 +89,45 @@ export default function Chatbot() {
   );
 
   return (
-    <LinearGradient
-      colors={[ '#000000' ,'#dd5201',]}
-      start={{ x: 1, y: 1 }}
-      end={{ x: 3, y: 0 }}
+    <ImageBackground
+      source={require('../../../assets/image/ai-bg.jpg')} // Set the background image here
       style={styles.container}
     >
-      <Image
-        source={require('../../../assets/image/ai-avatar.jpg')}
-        style={styles.avatar}
-      />
-      <Text style={styles.title}>Gemini Chatbot</Text>
-      <FlatList
-        data={chat}
-        renderItem={renderChatItem}
-        keyExtractor={(item, index) => index.toString()}
-        contentContainerStyle={styles.chatContainer}
-      />
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Type your message..."
-          placeholderTextColor="#aaa"
-          value={userInput}
-          onChangeText={setUserInput}
+      {/* <LinearGradient
+        colors={['#000000', '#dd5201']}
+        start={{ x: 1, y: 1 }}
+        end={{ x: 3, y: 0 }}
+        style={styles.gradientContainer}
+      > */}
+        <StatusBar translucent backgroundColor="transparent" />
+
+        <Image
+          source={require('../../../assets/image/ai-avatar.jpg')}
+          style={styles.avatar}
         />
-        <TouchableOpacity style={styles.sendButton} onPress={handleUserInput}>
-          <FontAwesome name="send" size={20} color="#fff" />
-        </TouchableOpacity>
-      </View>
-      {loading && <ActivityIndicator style={styles.loading} color="#dd5201" />}
-      {error && <Text style={styles.error}>{error}</Text>}
-    </LinearGradient>
+        <Text style={styles.title}>Gemini Chatbot</Text>
+        <FlatList
+          data={chat}
+          renderItem={renderChatItem}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={styles.chatContainer}
+        />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Type your message..."
+            placeholderTextColor="#aaa"
+            value={userInput}
+            onChangeText={setUserInput}
+          />
+          <TouchableOpacity style={styles.sendButton} onPress={handleUserInput}>
+            <FontAwesome name="send" size={20} color="#fff" />
+          </TouchableOpacity>
+        </View>
+        {loading && <ActivityIndicator style={styles.loading} color="#dd5201" />}
+        {error && <Text style={styles.error}>{error}</Text>}
+      {/* </LinearGradient> */}
+    </ImageBackground>
   );
 }
 
@@ -126,12 +135,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    // Ensure gradient fills the entire background
     justifyContent: "space-between",
+    paddingTop:50
+  },
+  gradientContainer: {
+    flex: 1,
   },
   avatar: {
     position: "absolute",
-    top: 20,
+    top: 50,
     right: 20,
     width: 50,
     height: 50,
@@ -141,7 +153,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#fff", // White text for the title
+    color: "#fff",
     marginBottom: 20,
     textAlign: "left",
   },
@@ -153,7 +165,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#333", // Dark input background
+    backgroundColor: "#333",
     borderRadius: 25,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -167,10 +179,10 @@ const styles = StyleSheet.create({
     height: 40,
     marginRight: 10,
     paddingLeft: 10,
-    color: "#fff", // White input text
+    color: "#fff",
   },
   sendButton: {
-    backgroundColor: "#dd5201", // Button with orange color
+    backgroundColor: "#dd5201",
     borderRadius: 25,
     padding: 10,
   },
@@ -178,7 +190,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   error: {
-    color: "#dd5201", // Orange error text
+    color: "#dd5201",
     marginTop: 10,
     textAlign: "center",
   },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Platform } from 'react-native';
+import { View, StyleSheet, ScrollView, Platform, StatusBar } from 'react-native';
 import { Button, TextInput, Text } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useAuthContext } from '../../../contexts/AuthContext';
@@ -83,6 +83,8 @@ export default function AddTasks() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.flexContainer}>
+              <StatusBar translucent backgroundColor="transparent" />
+        
         <View style={{ width: '100%' }}>
           {/* Top View */}
           <View style={styles.topView}>

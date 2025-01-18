@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome"; // Import FontAwesome
 import Clipboard from "@react-native-clipboard/clipboard";
 
@@ -16,6 +16,8 @@ const ChatBubble = ({ role, text, onSpeech }) => {
         role === "user" ? styles.userChatItem : styles.modelChatItem,
       ]}
     >
+            <StatusBar translucent backgroundColor="transparent" />
+      
       <Text style={styles.chatText}>{text}</Text>
       <View style={styles.actions}>
         <TouchableOpacity onPress={onSpeech} style={styles.speakerIcon}>

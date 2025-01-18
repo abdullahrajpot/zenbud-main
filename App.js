@@ -24,9 +24,9 @@ export default function App() {
           height: 70,
           borderRightColor: '#dd5201',
           borderRightWidth: 7,
-          backgroundColor:'black'
+          backgroundColor: 'black'
         }}
-        contentContainerStyle={{paddingHorizontal: 15}}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
         text1Style={{
           fontSize: 17,
           fontWeight: '700',
@@ -51,10 +51,10 @@ export default function App() {
           height: 70,
           borderRightColor: 'red',
           borderRightWidth: 7,
-          backgroundColor:'black',
-          
+          backgroundColor: 'black',
+
         }}
-        contentContainerStyle={{paddingHorizontal: 15}}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
         text1Style={{
           fontSize: 17,
           fontWeight: '700',
@@ -74,14 +74,14 @@ export default function App() {
       const enabled =
         authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
         authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-  
+
       if (enabled) {
         console.log('Notification permission granted.');
       }
     };
-  
+
     requestPermission();
-  
+
     // Listen for messages in foreground
     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
       await notifee.displayNotification({
@@ -92,7 +92,7 @@ export default function App() {
         },
       });
     });
-  
+
     return unsubscribe;
   }, []);
   return (
@@ -101,9 +101,11 @@ export default function App() {
       <AuthContextProvider>
         <TaskContextProvider>
           <PaperProvider>
+            <NavigationContainer>
 
-            <AppNavigator />
-            <Toast config={toastConfig} />
+              <AppNavigator />
+              <Toast config={toastConfig} />
+            </NavigationContainer>
 
           </PaperProvider>
         </TaskContextProvider>

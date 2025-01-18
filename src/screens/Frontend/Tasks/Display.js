@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { Avatar, Title } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
@@ -27,6 +27,8 @@ export default function Display() {
     <ScrollView style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
+              <StatusBar translucent backgroundColor="transparent" />
+        
         <View style={styles.idSection}>
           <Title style={styles.greeting}>Hi {user.name}</Title>
           <Text style={styles.subText}> {getPendingTasksCount()} Tasks are pending</Text>

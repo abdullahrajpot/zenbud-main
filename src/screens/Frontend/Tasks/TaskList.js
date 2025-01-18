@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TextInput } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TextInput, StatusBar } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useTaskContext } from '../../../contexts/TaskContext';
 import { Button, Menu, Divider } from 'react-native-paper';
@@ -53,6 +53,8 @@ export default function TaskList() {
 
     return (
         <View style={styles.container}>
+                  <StatusBar translucent backgroundColor="transparent" />
+            
             {/* Page Title */}
             <Text style={styles.title}>{status} Tasks</Text>
 

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
   TextInput,
+  StatusBar,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useAuthContext } from '../../../contexts/AuthContext';
@@ -79,6 +80,8 @@ const NotesDisplay = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+            <StatusBar translucent backgroundColor="transparent" />
+      
       <Text style={styles.title}>Your Notes</Text>
 
       {/* Search Bar */}

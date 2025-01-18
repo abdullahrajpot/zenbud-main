@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ToastAndroid,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useAuthContext } from '../../../contexts/AuthContext';
@@ -58,6 +59,8 @@ const NotePad = ({ route, navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+            <StatusBar translucent backgroundColor="transparent" />
+      
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.backButton}>←</Text>

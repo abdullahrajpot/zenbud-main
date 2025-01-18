@@ -88,6 +88,7 @@ import {
   Animated,
   Easing,
   Vibration,
+  StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Sound from 'react-native-sound';
@@ -174,7 +175,10 @@ const PomodoroTimer = ({ navigation }) => {
   });
 
   return (
+    
     <View style={styles.container}>
+            <StatusBar translucent backgroundColor="transparent" />
+      
       <Text style={styles.header}>Pomodoro Timer</Text>
 
       <View style={styles.timerContainer}>

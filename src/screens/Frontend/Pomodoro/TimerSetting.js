@@ -7,6 +7,7 @@ import {
   Pressable,
   Modal,
   FlatList,
+  StatusBar,
 } from 'react-native';
 import Toast from 'react-native-toast-message';
 
@@ -45,6 +46,8 @@ const TimerSetting = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
+            <StatusBar translucent backgroundColor="transparent" />
+      
       <Text style={styles.header}>Add New Timer</Text>
 
       {/* Work Time Dropdown */}
