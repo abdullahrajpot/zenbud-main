@@ -12,7 +12,7 @@ import Tasks from '../screens/Frontend/Tasks';
 import Pomodoro from '../screens/Frontend/Pomodoro';
 import AiChat from '../screens/Frontend/AiChat';
 import Notes from '../screens/Frontend/Notes';
-// import Spotify from '../screens/Frontend/Spotify';
+import Spotify from '../screens/Frontend/Spotify';
 
 export default function AppNavigator() {
     const Stack = createNativeStackNavigator();
@@ -69,9 +69,9 @@ export default function AppNavigator() {
                                 case 'Notes':
                                     iconName = 'clipboard';
                                     break;
-                                // case 'Spotify':
-                                //     iconName = 'spotify';
-                                //     break;
+                                case 'Spotify':
+                                    iconName = 'spotify';
+                                    break;
                                 default:
                                     iconName = 'circle';
                             }
@@ -107,13 +107,13 @@ export default function AppNavigator() {
                             headerShown: false,
                         }}
                     />
-                    {/* <Tab.Screen
+                    <Tab.Screen
                         name="Spotify"
                         component={Spotify}
                         options={{
                             headerShown: false,
                         }}
-                    /> */}
+                    />
                     <Tab.Screen
                         name="Notes"
                         component={Notes}
