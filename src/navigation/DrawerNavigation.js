@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableOpacity } from 'react-native';
 import AiChat from '../screens/Frontend/AiChat';
 import Notes from '../screens/Frontend/Notes';
+import ImgToText from '../screens/Frontend/ImgToText';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,6 +32,7 @@ export default function DrawerNavigation() {
       <Drawer.Screen name="Main" component={BottomTabs} />
        <Drawer.Screen name="AiChat" component={AiChat} />
       <Drawer.Screen name="Notes" component={Notes} />
+      <Drawer.Screen name="ImgToText" component={ImgToText} />
     </Drawer.Navigator>
   );
 }

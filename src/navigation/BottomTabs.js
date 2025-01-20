@@ -5,6 +5,7 @@ import Home from '../screens/Frontend/Home';
 import Tasks from '../screens/Frontend/Tasks';
 import Pomodoro from '../screens/Frontend/Pomodoro';
 import Spotify from '../screens/Frontend/Spotify';
+import { View, StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,16 +13,12 @@ export default function BottomTabs() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerShown:false,
+        headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: '#000',
-          paddingTop:8,
-          borderTopWidth: 0,
-        },
-        tabBarActiveTintColor: '#dd5201',
+        tabBarStyle: styles.tabBarStyle,
+        tabBarActiveTintColor: '#dd5201', // Highlight color for active tab
         tabBarInactiveTintColor: '#888',
-        tabBarIcon: ({ color, size }) => {
+        tabBarIcon: ({ color, size, focused }) => {
           let iconName;
           switch (route.name) {
             case 'Home': iconName = 'home'; break;
@@ -29,7 +26,14 @@ export default function BottomTabs() {
             case 'Pomodoro': iconName = 'clock-o'; break;
             case 'Spotify': iconName = 'spotify'; break;
           }
-          return <Icon name={iconName} size={size} color={color} />;
+
+          // Add active icon styling
+          return (
+            <View style={[styles.iconContainer, focused && styles.activeIconContainer]}>
+              <Icon name={iconName} size={size} color={color} />
+              {focused && <View style={styles.activeIndicator} />}
+            </View>
+          );
         },
       })}
     >
@@ -40,3 +44,40 @@ export default function BottomTabs() {
     </Tab.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    backgroundColor: '#121212', // Dark theme background
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0, // No bottom margin
+    height: 70,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+    paddingTop:10
+  },
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+  },
+  // activeIconContainer: {
+  //   // backgroundColor: '#dd5201', // Orange highlight for active icon
+  //   borderRadius: 25,
+  //   padding: 10,
+  // },
+  activeIndicator: {
+    width: 6,
+    height: 6,
+    backgroundColor: '#dd5201',
+    borderRadius: 3,
+    position: 'absolute',
+    bottom: -10,
+  },
+});

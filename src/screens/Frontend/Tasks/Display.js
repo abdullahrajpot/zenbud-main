@@ -9,7 +9,7 @@ import { useTaskContext } from '../../../contexts/TaskContext';
 export default function Display() {
   const { user } = useAuthContext();
   const navigation = useNavigation();
-  const {tasks} = useTaskContext();
+  const { tasks } = useTaskContext();
 
   // Function to handle navigation based on task status
   const handleNavigateToTasks = (status) => {
@@ -18,7 +18,7 @@ export default function Display() {
   const getTaskCountByStatus = (status) => {
     return tasks.filter((task) => task.status === status).length;
   };
-  
+
   const getPendingTasksCount = () => {
     return tasks.filter((task) => task.status === 'Pending').length;
   };
@@ -27,8 +27,8 @@ export default function Display() {
     <ScrollView style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-              <StatusBar translucent backgroundColor="transparent" />
-        
+        <StatusBar translucent backgroundColor="transparent" />
+
         <View style={styles.idSection}>
           <Title style={styles.greeting}>Hi {user.name}</Title>
           <Text style={styles.subText}> {getPendingTasksCount()} Tasks are pending</Text>
@@ -64,15 +64,15 @@ export default function Display() {
         <View style={styles.statsContainer}>
           {/* Individual Stat Cards */}
           {[
-            { label: 'Done',  status: 'Done' },
-            { label: 'In Progress',  status: 'In Progress' },
-            { label: 'Ongoing',  status: 'Ongoing' },
-            { label: 'Waiting for Review',  status: 'Pending' },
+            { label: 'Done', status: 'Done' },
+            { label: 'In Progress', status: 'In Progress' },
+            { label: 'Ongoing', status: 'Ongoing' },
+            { label: 'Waiting for Review', status: 'Pending' },
           ].map((stat, index) => (
             <TouchableOpacity
               key={index}
               onPress={() => handleNavigateToTasks(stat.status)} // Navigate to TaskList with the status\
-              
+
             >
               <LinearGradient
                 colors={['#dd5201', '#000000']}
@@ -80,11 +80,11 @@ export default function Display() {
                 end={{ x: 0, y: 0 }}
                 // style={styles.statCard}
                 style={[
-                    styles.statCard,
-                    (stat.label === 'Done' || stat.label === 'Waiting for Review') && styles.largeStatCard,
-                  ]}
+                  styles.statCard,
+                  (stat.label === 'Done' || stat.label === 'Waiting for Review') && styles.largeStatCard,
+                ]}
               >
-        <Text style={styles.statNumber}>{getTaskCountByStatus(stat.status)}</Text>
+                <Text style={styles.statNumber}>{getTaskCountByStatus(stat.status)}</Text>
 
                 {/* <Text style={styles.statNumber}>{stat.value}</Text> */}
                 <Text style={styles.statLabel}>{stat.label}</Text>
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    marginTop:15
+    marginTop: 15
   },
   statCard: {
     borderRadius: 12,
@@ -194,8 +194,8 @@ const styles = StyleSheet.create({
   },
   largeStatCard: {
     height: 130,
-    width:160, // Increase height for "Done" and "Waiting for Review"
-    marginTop:0
+    width: 160, // Increase height for "Done" and "Waiting for Review"
+    marginTop: 0
   },
   statNumber: {
     color: 'white',

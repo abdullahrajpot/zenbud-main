@@ -19,6 +19,7 @@ const DrawerContent = (props) => {
     { label: 'Pomodoro', icon: 'clock-outline', navigateTo: 'Pomodoro' },
     { label: 'Spotify', icon: 'spotify', navigateTo: 'Spotify' },
     { label: 'Notes', icon: 'note-outline', navigateTo: 'Notes' },
+    { label: 'Img-To-Text', icon: 'image-text', navigateTo: 'ImgToText' },
   ];
 
   const signOut = () => {
