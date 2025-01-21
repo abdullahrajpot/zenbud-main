@@ -210,6 +210,20 @@ const SongPlayer = ({ route, navigation }) => {
       setIsPlaying(!isPlaying);
     }
   };
+  // UseEffect to handle the song duration and slider progress
+useEffect(() => {
+  if (currentSong) {
+    // Update position every second
+    const interval = setInterval(() => {
+      currentSong.getCurrentTime((time) => {
+        setPosition(time); // Update slider's current position
+      });
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }
+}, [currentSong]);
+
 
   const handleSeek = (value) => {
     if (currentSong) {
@@ -314,15 +328,16 @@ const SongPlayer = ({ route, navigation }) => {
 
         {/* Slider */}
         <Slider
-          value={position}
-          minimumValue={0}
-          maximumValue={duration}
-          onValueChange={handleSeek}
-          style={{ width: '80%', alignSelf: 'center', marginVertical: 20 }}
-          minimumTrackTintColor="#1DB954"
-          maximumTrackTintColor="#535353"
-          thumbTintColor="#1DB954"
-        />
+  value={position}
+  minimumValue={0}
+  maximumValue={currentSong ? currentSong.getDuration() : 0}
+  onValueChange={handleSeek} // Allow seeking
+  style={{ width: '80%', alignSelf: 'center', marginVertical: 20 }}
+  minimumTrackTintColor="#1DB954"
+  maximumTrackTintColor="#535353"
+  thumbTintColor="#1DB954"
+/>
+
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 40 }}>
           <Text style={{ color: 'white', fontSize: 14 }}>{formatTime(position)}</Text>
           <Text style={{ color: 'white', fontSize: 14 }}>{formatTime(duration)}</Text>

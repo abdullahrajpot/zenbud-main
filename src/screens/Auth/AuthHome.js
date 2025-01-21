@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Image } from 'react-native';
 import { Button } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';  // Import FontAwesome from react-native-vector-icons
 import { useNavigation } from '@react-navigation/native';
@@ -9,15 +9,16 @@ export default function AuthHome() {
   const navigation= useNavigation();
   return (
     <ImageBackground 
-      source={require("../../assets/image/bghome.jpg")}  // Provide the correct image path
+      source={require("../../assets/image/bghome4.jpg")}  // Provide the correct image path
       style={styles.imageBackground}  // Apply styles to the background image
     >
       {/* Overlay with opacity */}
       <View style={styles.overlay} />
      <View style={styles.TopText}>
-     <Text style={{ fontSize: 25,fontWeight:'bold', color: 'white', paddingTop:'20' }}>
-          Zenbud
-        </Text>
+      <Image
+          source={require('../../assets/image/zendark.png')} // Replace with your icon image
+          style={styles.icon}
+        />
      </View>
       <View style={styles.flexContainer}>
         <Text style={{ fontSize: 30, color: 'white', fontWeight: 'bold', fontStyle: 'italic' }}>

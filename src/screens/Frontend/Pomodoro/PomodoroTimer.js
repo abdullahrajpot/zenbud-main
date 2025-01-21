@@ -91,6 +91,7 @@ import {
   StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
 import Sound from 'react-native-sound';
 
 const PomodoroTimer = ({ navigation }) => {
@@ -169,24 +170,25 @@ const PomodoroTimer = ({ navigation }) => {
   const minutes = Math.floor(remainingTime / 60);
   const seconds = remainingTime % 60;
 
-  const progressPercentage = progressAnimation.interpolate({
+  const progressStrokeWidth = progressAnimation.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0%', '100%'],
+    outputRange: ['0deg', '360deg'],
   });
 
   return (
-    
-    <View style={styles.container}>
-            <StatusBar translucent backgroundColor="transparent" />
-      
+    // <LinearGradient colors={['#000000', '#dd5201']}>
+    <View  style={styles.gradientContainer}>
+
+      <StatusBar translucent backgroundColor="transparent" />
+
       <Text style={styles.header}>Pomodoro Timer</Text>
 
       <View style={styles.timerContainer}>
         <View style={styles.outerCircle}>
           <Animated.View
             style={[
-              styles.progressCircle,
-              { width: progressPercentage, height: progressPercentage },
+              styles.progressOutline,
+              { transform: [{ rotate: progressStrokeWidth }] },
             ]}
           />
           <View style={styles.innerCircle}>
@@ -210,7 +212,6 @@ const PomodoroTimer = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Icon for navigation to Add Timer page */}
       <TouchableOpacity
         style={styles.addTimerButton}
         onPress={() => {
@@ -224,26 +225,27 @@ const PomodoroTimer = ({ navigation }) => {
             },
           });
         }}
-      >
-        <Icon name="add-circle" size={60} color="#dd5201" />
+        >
+        <Icon name="add-circle" size={60} color="#ffffff" />
       </TouchableOpacity>
-    </View>
+        </View>
+    // </LinearGradient>
   );
 };
 
 export default PomodoroTimer;
 
 const styles = StyleSheet.create({
-  container: {
+  gradientContainer: {
     flex: 1,
-    backgroundColor: '#000000',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor:'#000000'
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#dd5201',
+    color: '#ffffff',
     marginBottom: 20,
   },
   timerContainer: {
@@ -258,14 +260,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
+    position: 'relative',
   },
-  progressCircle: {
+  progressOutline: {
     position: 'absolute',
-    width: '0%',
-    height: '0%',
+    width: 250,
+    height: 250,
     borderRadius: 125,
-    backgroundColor: '#dd5201',
-    opacity: 0.2,
+    borderWidth: 8,
+    borderColor: '#dd5201',
   },
   innerCircle: {
     width: 200,
@@ -283,27 +286,29 @@ const styles = StyleSheet.create({
   },
   taskLabel: {
     fontSize: 18,
-    color: '#dd5201',
+    color: '#ffffff',
     marginTop: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
     marginTop: 30,
+
   },
   button: {
     backgroundColor: '#dd5201',
     padding: 15,
     borderRadius: 10,
     marginHorizontal: 10,
+    
   },
   buttonText: {
     fontSize: 18,
-    color: '#ffffff',
+    color: '#fff',
     fontWeight: 'bold',
   },
   addTimerButton: {
     position: 'absolute',
-    bottom: 0,
-    right: 10,
+    bottom: 80,
+    right: 20,
   },
 });

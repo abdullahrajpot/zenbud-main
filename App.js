@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
+import { Platform, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import AppNavigator from './src/navigation/AppNavigator'
 import AuthContextProvider from './src/contexts/AuthContext'
@@ -8,10 +8,15 @@ import { PaperProvider } from 'react-native-paper'
 import notifee from '@notifee/react-native';
 import messaging from '@react-native-firebase/messaging';
 import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
+// import SplashScreen from 'react-native-splash-screen'
 
 
 export default function App() {
 
+  // useEffect(()=>{
+  //   if(Platform.OS === 'android')
+  //   SplashScreen.hide();
+  // },[])
 
   const toastConfig = {
     success: props => (

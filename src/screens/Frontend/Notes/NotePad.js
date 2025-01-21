@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#000000',
     padding: 16,
+    paddingTop:50
   },
   header: {
     flexDirection: 'row',
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     color: '#fff',
-    backgroundColor: '#2C2C2C',
+    backgroundColor: '#000000',
     marginBottom: 12,
   },
   textInput: {
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     padding: 16,
     fontSize: 16,
     color: '#fff',
-    backgroundColor: '#2C2C2C',
+    backgroundColor: '#000000',
     flex: 1,
   },
   footer: {

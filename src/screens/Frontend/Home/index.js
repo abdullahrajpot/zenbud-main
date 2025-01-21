@@ -324,8 +324,9 @@ const styles = StyleSheet.create({
     right: 10,
   },
   featuresSection: {
-    marginTop: 30,
+    marginTop: 140,
     paddingHorizontal: 20,
+    bottom:100
   },
   featureCard: {
     borderRadius: 12,
