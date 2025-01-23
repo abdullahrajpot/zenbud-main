@@ -95,8 +95,12 @@ const styles = StyleSheet.create({
   },
   TopText: {
     marginTop: 10,
-    paddingLeft:'30',
-    opacity: 0.5,
+    paddingLeft:20,
+    opacity: 1,
+  },
+  icon: {
+    width: 160, // Adjust size as needed
+    height: 80,
   },
   createAccountText: {
     fontSize: 16,

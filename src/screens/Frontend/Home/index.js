@@ -150,19 +150,25 @@ export default function Home() {
 
 
       {/* Promotional Section */}
-      <Animated.View
+    {/* Promotional Section */}
+    <Animated.View
         entering={FadeInDown.delay(200)}
         style={styles.promoSection}
       >
-        <Image
-          source={require('../../../assets/image/main2.jpg')} // Replace with your promotional image
-          style={styles.promoImage}
-        />
-        <Text style={styles.promoTitle}>Welcome to Our App!</Text>
-        <Text style={styles.promoText}>
-          Manage your tasks efficiently with our modern features and intuitive
-          design.
-        </Text>
+        <LinearGradient
+          colors={['#dd5201', '#000000']}
+          style={styles.promoCard}
+        >
+          <Image
+            source={require('../../../assets/image/main2.jpg')}
+            style={styles.promoImage}
+          />
+          <Text style={styles.promoTitle}>Welcome to Our App!</Text>
+          <Text style={styles.promoText}>
+            Manage your tasks efficiently with our modern features and intuitive
+            design.
+          </Text>
+        </LinearGradient>
       </Animated.View>
 
       {/* Pending Tasks Section */}
@@ -244,7 +250,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   greeting: {
-    color: 'white',
+    color: '#dd5201',
     fontSize: 26,
     fontFamily: 'Poppins-Bold',
   },
@@ -262,12 +268,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 20,
   },
+  promoCard: {
+    width: '100%',
+    borderRadius: 20,
+    padding: 15,
+    alignItems: 'center',
+  },
   promoImage: {
     width: '100%',
     height: 200,
     borderRadius: 20,
-    borderWidth: 2,
-    borderColor: '#dd5201',
     marginBottom: 10,
   },
   promoTitle: {
@@ -277,7 +287,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   promoText: {
-    color: '#888',
+    color: 'white',
     fontSize: 14,
     textAlign: 'center',
     fontFamily: 'Poppins-Regular',

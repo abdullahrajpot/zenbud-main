@@ -8,15 +8,15 @@ import { PaperProvider } from 'react-native-paper'
 import notifee from '@notifee/react-native';
 import messaging from '@react-native-firebase/messaging';
 import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
-// import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen'
 
 
 export default function App() {
 
-  // useEffect(()=>{
-  //   if(Platform.OS === 'android')
-  //   SplashScreen.hide();
-  // },[])
+  useEffect(()=>{
+    if(Platform.OS === 'android')
+    SplashScreen.hide();
+  },[])
 
   const toastConfig = {
     success: props => (
