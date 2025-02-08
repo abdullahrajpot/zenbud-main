@@ -19,7 +19,7 @@ const TimerSetting = ({ route, navigation }) => {
   const [isWorkTimeModalVisible, setWorkTimeModalVisible] = useState(false);
   const [isBreakTimeModalVisible, setBreakTimeModalVisible] = useState(false);
 
-  const timeOptions = Array.from({ length: 60 }, (_, i) => (i + 1).toString()); // Options from 1 to 60 minutes
+  const timeOptions = Array.from({ length: 60 }, (_, i) => (i + 1).toString()); 
 
   const handleSave = () => {
     const work = parseInt(newWorkTime);
@@ -29,7 +29,6 @@ const TimerSetting = ({ route, navigation }) => {
       updateTimes(work, breakT);
       navigation.goBack();
     } else {
-      // alert('Please select valid times!');.
       Toast.show({
         type: 'error',
         text2: 'Please select valid times!',

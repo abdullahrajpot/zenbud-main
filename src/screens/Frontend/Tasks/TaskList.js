@@ -8,18 +8,17 @@ import Toast from 'react-native-toast-message';
 
 export default function TaskList() {
     const { params } = useRoute();
-    const { tasks, removeTask, updateTaskStatus } = useTaskContext(); // Add `updateTaskStatus` from context
+    const { tasks, removeTask, updateTaskStatus } = useTaskContext(); 
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const status = params?.status; // Get the status passed from navigation
+    const status = params?.status;
     const [menuVisible, setMenuVisible] = useState({});
 
     useEffect(() => {
-        // Filter tasks based on status and search query
         const filtered = tasks.filter(
             (task) =>
-                (!status || task.status === status) && // Match status
-                task.title.toLowerCase().includes(searchQuery.toLowerCase()) // Match search query
+                (!status || task.status === status) && 
+                task.title.toLowerCase().includes(searchQuery.toLowerCase()) 
         );
         setFilteredTasks(filtered);
     }, [tasks, status, searchQuery]);
@@ -30,12 +29,12 @@ export default function TaskList() {
             type: 'success',
             text2: 'Task has been removed!',
             visibilityTime: 10000,
-        }); // Call the removeTask function from context
+        }); 
     };
 
     const handleUpdateStatus = (taskId, newStatus) => {
-        updateTaskStatus(taskId, newStatus); // Call the updateTaskStatus function from context
-        setMenuVisible({ ...menuVisible, [taskId]: false }); // Close the menu
+        updateTaskStatus(taskId, newStatus); 
+        setMenuVisible({ ...menuVisible, [taskId]: false }); 
         Toast.show({
             type: 'success',
             text2: 'Status updated!',

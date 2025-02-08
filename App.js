@@ -41,10 +41,7 @@ export default function App() {
         }}
       />
     ),
-    /*
-      Overwrite 'error' type,
-      by modifying the existing `ErrorToast` component
-    */
+    
     error: props => (
       <ErrorToast
         {...props}
@@ -87,7 +84,6 @@ export default function App() {
 
     requestPermission();
 
-    // Listen for messages in foreground
     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
       await notifee.displayNotification({
         title: remoteMessage.notification.title,

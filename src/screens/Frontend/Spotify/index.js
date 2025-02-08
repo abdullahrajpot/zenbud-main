@@ -22,11 +22,7 @@ export default function Spotify() {
           headerShown:false
         }}
         name="SongPlayer" component={SongPlayer} />
-        {/* <Stack.Screen
-        options={{
-          headerShown:false
-        }}
-        name="TaskList" component={songsList} /> */}
+        
       </Stack.Navigator>
     
   );

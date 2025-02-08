@@ -1,83 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
-
-// const PomodoroTimer = () => {
-//   const [workTime, setWorkTime] = useState(25); // Work time in minutes
-//   const [breakTime, setBreakTime] = useState(5); // Break time in minutes
-//   const [timeLeft, setTimeLeft] = useState(workTime * 60); // Time in seconds
-//   const [isRunning, setIsRunning] = useState(false);
-//   const [intervalType, setIntervalType] = useState('Working'); // 'Working' or 'Break'
-//   const [timerId, setTimerId] = useState(null); // Store the interval ID
-
-//   const navigation = useNavigation();
-
-//   // Timer progress circle animation
-//   const progress = new Animated.Value( 0);
-
-//   const handlePlay = () => {
-//     if (!isRunning) {
-//       setIsRunning(true);
-//       setIntervalType('Working');
-//       startTimer();
-//       startProgress();
-//     }
-//   };
-
-//   const startTimer = () => {
-//     const id = setInterval(() => {
-//       setTimeLeft((prevTime) => {
-//         if (prevTime <= 0) {
-//           clearInterval(id);
-//           setIsRunning(false);
-//           return 0;
-//         }
-//         return prevTime - 1;
-//       });
-//     }, 1000);
-//     setTimerId(id); // Store the interval ID
-//   };
-
-//   const startProgress = () => {
-//     Animated.timing(progress, {
-//       toValue: 1,
-//       duration: workTime * 60 * 1000,
-//       useNativeDriver: false,
-//     }).start();
-//   };
-
-//   const handlePause = () => {
-//     setIsRunning(false);
-//     clearInterval(timerId); // Clear the interval using the stored ID
-//   };
-
-//   const handleReset = () => {
-//     setIsRunning(false);
-//     clearInterval(timerId); // Clear the interval on reset
-//     setTimeLeft(workTime * 60);
-//     progress.setValue(0);
-//   };
-
-//   const handleNavigateToSettings = () => {
-//     navigation.navigate('TimerSetting', {
-//       workTime,
-//       breakTime,
-//       updateTimes: updateTimes,
-//     });
-//   };
-
-//   const updateTimes = (newWorkTime, newBreakTime) => {
-//     setWorkTime(newWorkTime);
-//     setBreakTime(newBreakTime);
-//     setTimeLeft(newWorkTime * 60);
-//   };
-
-//   const minutes = Math.floor(timeLeft / 60);
-//   const seconds = timeLeft % 60;
-
-
-
-
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
@@ -95,11 +15,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import Sound from 'react-native-sound';
 
 const PomodoroTimer = ({ navigation }) => {
-  const [workTime, setWorkTime] = useState(25); // Work time in minutes
-  const [breakTime, setBreakTime] = useState(5); // Break time in minutes
-  const [remainingTime, setRemainingTime] = useState(workTime * 60); // Time in seconds
+  const [workTime, setWorkTime] = useState(25); 
+  const [breakTime, setBreakTime] = useState(5); 
+  const [remainingTime, setRemainingTime] = useState(workTime * 60); 
   const [isRunning, setIsRunning] = useState(false);
-  const [intervalType, setIntervalType] = useState('Work'); // 'Work' or 'Break'
+  const [intervalType, setIntervalType] = useState('Work'); 
 
   const progressAnimation = useRef(new Animated.Value(0)).current;
   const timerRef = useRef(null);
@@ -176,7 +96,6 @@ const PomodoroTimer = ({ navigation }) => {
   });
 
   return (
-    // <LinearGradient colors={['#000000', '#dd5201']}>
     <View  style={styles.gradientContainer}>
 
       <StatusBar translucent backgroundColor="transparent" />
@@ -221,7 +140,7 @@ const PomodoroTimer = ({ navigation }) => {
             updateTimes: (newWorkTime, newBreakTime) => {
               setWorkTime(newWorkTime);
               setBreakTime(newBreakTime);
-              setRemainingTime(newWorkTime * 60); // Reset to new work time
+              setRemainingTime(newWorkTime * 60); 
             },
           });
         }}
@@ -229,7 +148,6 @@ const PomodoroTimer = ({ navigation }) => {
         <Icon name="add-circle" size={60} color="#ffffff" />
       </TouchableOpacity>
         </View>
-    // </LinearGradient>
   );
 };
 

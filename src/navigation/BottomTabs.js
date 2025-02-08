@@ -16,7 +16,7 @@ export default function BottomTabs() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBarStyle,
-        tabBarActiveTintColor: '#dd5201', // Highlight color for active tab
+        tabBarActiveTintColor: '#dd5201', 
         tabBarInactiveTintColor: '#888',
         tabBarIcon: ({ color, size, focused }) => {
           let iconName;
@@ -27,7 +27,6 @@ export default function BottomTabs() {
             case 'Spotify': iconName = 'spotify'; break;
           }
 
-          // Add active icon styling
           return (
             <View style={[styles.iconContainer, focused && styles.activeIconContainer]}>
               <Icon name={iconName} size={size} color={color} />
@@ -47,13 +46,13 @@ export default function BottomTabs() {
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    backgroundColor: '#121212', // Dark theme background
+    backgroundColor: '#121212', 
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 0, // No bottom margin
+    bottom: 0, 
     height: 70,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -2 },
@@ -67,11 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
   },
-  // activeIconContainer: {
-  //   // backgroundColor: '#dd5201', // Orange highlight for active icon
-  //   borderRadius: 25,
-  //   padding: 10,
-  // },
+ 
   activeIndicator: {
     width: 6,
     height: 6,

@@ -27,14 +27,12 @@ export default function Register() {
       return Alert.alert('Error', 'Password must be at least 6 characters');
     }
 
-    // Firebase create user logic
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(userCredential => {
         const user = userCredential.user;
         console.log('User account created !', user);
 
-        // Create the user profile in Firebase Firestore (Optional step)
         createUserProfile(user, name, number);
         Toast.show({
           type: 'success',
@@ -50,7 +48,6 @@ export default function Register() {
             text2: 'That email address is already in use!',
             visibilityTime: 20000,
         });
-          // alert('Error', 'That email address is already in use!');
         }
 
         if (error.code === 'auth/invalid-email') {
@@ -99,7 +96,6 @@ export default function Register() {
           <TextInput
             mode="flat"
             label="Name"
-            // placeholder="Enter Name"
             placeholderTextColor={focusedField === 'name' ? smokeColor : 'white'}
             style={[styles.inputField, { borderBottomColor: focusedField === 'name' ? smokeColor : 'white' }]}
             onChangeText={val => handleChange('name', val)}
@@ -119,7 +115,6 @@ export default function Register() {
           <TextInput
             mode="flat"
             label="Phone"
-            // placeholder="Phone Number"
             placeholderTextColor={focusedField === 'number' ? smokeColor : 'white'}
             style={[styles.inputField, { borderBottomColor: focusedField === 'number' ? smokeColor : 'white' }]}
             onChangeText={val => handleChange('number', val)}
@@ -139,7 +134,6 @@ export default function Register() {
           <TextInput
             mode="flat"
             label="Email"
-            // placeholder="Enter Email"
             placeholderTextColor={focusedField === 'email' ? smokeColor : 'white'}
             style={[styles.inputField, { borderBottomColor: focusedField === 'email' ? smokeColor : 'white' }]}
             onChangeText={val => handleChange('email', val)}
@@ -247,19 +241,18 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   bottom: {
-    flexDirection: 'row', // Aligns text in one line
-    justifyContent: 'center',  // Centers the text horizontally
+    flexDirection: 'row', 
+    justifyContent: 'center',  
     marginTop: 15,
     gap:65 
   },
   signInText: {
     color: smokeColor,
-    // textDecorationLine: 'underline', // Optional: Adds an underline to "Sign In"
   },
   inputField: {
     backgroundColor: 'transparent',
     marginBottom: 30,
-    borderBottomWidth: 1, // Only bottom border
+    borderBottomWidth: 1, 
   },
 });
 

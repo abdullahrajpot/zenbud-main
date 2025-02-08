@@ -41,7 +41,6 @@ export default function AddTasks() {
     };
   
     try {
-      // Add the task to Firestore
       await firestore().collection('Tasks').add(taskData);
   
       // Schedule the notification
@@ -99,7 +98,7 @@ export default function AddTasks() {
             onChangeText={(val) => handleChange('title', val)}
             theme={{
               colors: {
-                text: smokeColor,
+                text: "fff",
                 placeholder: smokeColor,
                 background: 'transparent',
                 underlineColor: 'transparent',
@@ -114,7 +113,7 @@ export default function AddTasks() {
             onChangeText={(val) => handleChange('description', val)}
             theme={{
               colors: {
-                text: smokeColor,
+                text: "#fff",
                 placeholder: smokeColor,
                 background: 'transparent',
                 underlineColor: 'transparent',
@@ -129,7 +128,7 @@ export default function AddTasks() {
             onChangeText={(val) => handleChange('category', val)}
             theme={{
               colors: {
-                text: smokeColor,
+                text: "#fff",
                 placeholder: smokeColor,
                 background: 'transparent',
                 underlineColor: 'transparent',

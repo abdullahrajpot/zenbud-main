@@ -7,16 +7,16 @@ import notifee, { AndroidImportance, TriggerType } from '@notifee/react-native';
 const TaskContext = createContext();
 
 export default function TaskContextProvider({ children }) {
-    const { user } = useAuthContext(); // Get the logged-in user
-    const [tasks, setTasks] = useState([]); // State to store tasks
-    const [loading, setLoading] = useState(true); // Loading state
+    const { user } = useAuthContext(); 
+    const [tasks, setTasks] = useState([]); 
+    const [loading, setLoading] = useState(true); 
 
 
     const scheduleNotification = async (task) => {
         const taskDate = new Date(`${task.date}T${task.time}:00`);
         const trigger = {
           type: TriggerType.TIMESTAMP,
-          timestamp: taskDate.getTime(), // Time in milliseconds
+          timestamp: taskDate.getTime(), 
         };
       
         await notifee.createChannel({
@@ -37,11 +37,10 @@ export default function TaskContextProvider({ children }) {
         );
       };
 
-    // Function to fetch tasks for the logged-in user
     const getTasks = async () => {
         try {
-            setLoading(true); // Start loading
-            if (!user) return; // Ensure user is available
+            setLoading(true); 
+            if (!user) return; 
 
             // Query to fetch tasks where `createdBy.uid` matches the logged-in user's UID
             const tasksQuery = query(
@@ -69,9 +68,8 @@ export default function TaskContextProvider({ children }) {
             await firestore()
                 .collection('Tasks')
                 .doc(taskId)
-                .delete(); // Delete the task from Firestore
+                .delete(); 
 
-            // Update the local state to remove the task
             setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
             console.log('Task deleted successfully!');
         } catch (error) {
@@ -84,7 +82,7 @@ export default function TaskContextProvider({ children }) {
                 .collection('Tasks')
                 .doc(taskId)
                 .update({ status: newStatus });
-            getTasks(); // Refresh tasks after update
+            getTasks(); 
         } catch (error) {
             console.error('Error updating task status:', error);
         }
@@ -93,7 +91,7 @@ export default function TaskContextProvider({ children }) {
 
     useEffect(() => {
         if (user) {
-            getTasks(); // Fetch tasks when user is available
+            getTasks(); 
         }
     }, [user]);
 

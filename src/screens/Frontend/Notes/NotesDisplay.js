@@ -56,7 +56,7 @@ const NotesDisplay = ({ navigation }) => {
           try {
             await firestore().collection('notes').doc(id).delete();
             Alert.alert('Note Deleted', 'Your note was successfully deleted.');
-            setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id)); // Update state to remove deleted note
+            setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id)); 
           } catch (error) {
             console.error('Error deleting note:', error);
             Alert.alert('Error', 'Failed to delete the note.');
@@ -66,16 +66,14 @@ const NotesDisplay = ({ navigation }) => {
     ]);
   };
 
-  // Navigate to NotePad for editing
   const editNote = (note) => {
-    navigation.navigate('NotePad', { note }); // Pass the note as a parameter
+    navigation.navigate('NotePad', { note }); 
   };
 
-  // Filter notes based on the search query
   const filteredNotes = tasks.filter(
     (note) =>
-      note.title.toLowerCase().includes(searchQuery.toLowerCase()) || // Match title
-      note.content.toLowerCase().includes(searchQuery.toLowerCase()) // Match content
+      note.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      note.content.toLowerCase().includes(searchQuery.toLowerCase()) 
   );
 
   return (

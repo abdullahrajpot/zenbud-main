@@ -1,75 +1,3 @@
-// import React from 'react'
-// import { Text, View, StyleSheet, Image, Alert, BackHandler } from 'react-native'
-// import { useAuthContext } from '../../../contexts/AuthContext'
-// import { Button } from 'react-native-paper';
-// import { useFocusEffect } from '@react-navigation/native';
-
-// export default function Home(){
-//   const {logOut}=useAuthContext();
-
-//   const handleBackPress = () => {
-//     Alert.alert('Exit App', 'Are you sure you want to exit?', [
-//       {
-//         text: 'Cancel',
-//         onPress: () => null,
-//         style: 'cancel',
-//       },
-//       {
-//         text: 'Exit',
-//         onPress: () => BackHandler.exitApp(),
-//       },
-//     ]);
-//     return true;
-//   };
-
-//   useFocusEffect(
-//     React.useCallback(() => {
-//       BackHandler.addEventListener('hardwareBackPress', handleBackPress);
-
-//       return () => {
-//         BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
-//       };
-//     }, []),
-//   );
-
-  
-//     return (
-//       <View style={styles.flexContainer}>
-//         <Text style={{fontSize:30}}>Name: Abdullah Tariq </Text>
-//         <Text style={{fontSize:30}}>RollNo: 182866 </Text>
-//         <Button mode="contained" onPress={logOut} style={styles.button}>
-//             Sign out
-//           </Button>
-
-//     {/* <Image
-//     style={styles.image}
-//     source= {require("./src/assets/")}
-//     /> */}
-//       </View>
-//     )
-//   }
-
-
-
-// const styles = StyleSheet.create({
-// flexContainer:{
-//   flex:1,
-//   // backgroundColor:"gray",
-//   justifyContent:'center',
-//   alignItems:'center'
-  
-// },
-// image:{
-//   width:"80%",
-//   height:"60%",
-
-// }
-
-
-
-// })
-
-
 
 import React from 'react';
 import {
@@ -125,32 +53,27 @@ export default function Home() {
 
   return (
     <ScrollView style={styles.container}>
-      {/* Header Section */}
       <View>
-  {/* Icon in the Top-Left Corner */}
   <View style={styles.iconContainer}>
     <Image
-      source={require('../../../assets/image/zendark.png')} // Replace with your icon image
+      source={require('../../../assets/image/zendark.png')} 
       style={styles.icon}
     />
         <Avatar.Icon size={60} icon="account-circle" style={styles.avatar} />
 
   </View>
 
-  {/* User Details Section */}
   <View style={styles.header}>
     <StatusBar translucent backgroundColor="transparent" />
     <View style={styles.idSection}>
       <Title style={styles.greeting}>Hi {user.name}</Title>
       <Text style={styles.subText}>Welcome Back!</Text>
     </View>
-    {/* <Avatar.Icon size={60} icon="account-circle" style={styles.avatar} /> */}
   </View>
 </View>
 
 
-      {/* Promotional Section */}
-    {/* Promotional Section */}
+      
     <Animated.View
         entering={FadeInDown.delay(200)}
         style={styles.promoSection}
@@ -236,13 +159,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   iconContainer: {
-    paddingHorizontal: 10, // Adjust left margin as needed
+    paddingHorizontal: 10, 
     marginTop: 30,   
     flexDirection:'row',
-    justifyContent:'space-between'      // Adjust top margin as needed
+    justifyContent:'space-between'      
   },
   icon: {
-    width: 160, // Adjust size as needed
+    width: 160, 
     height: 80,
   },
   
@@ -309,7 +232,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    position: 'relative', // Allows positioning for deadline
+    position: 'relative', 
   },
   taskInfo: {
     flex: 1,

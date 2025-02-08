@@ -11,7 +11,6 @@ export default function Display() {
   const navigation = useNavigation();
   const { tasks } = useTaskContext();
 
-  // Function to handle navigation based on task status
   const handleNavigateToTasks = (status) => {
     navigation.navigate('TaskList', { status }); // Pass the status to the TaskList screen
   };
@@ -102,7 +101,7 @@ const smokeColor = '#dd5201';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000000', // Primary black background
+    backgroundColor: '#000000', 
   },
   header: {
     flexDirection: 'row',
@@ -117,12 +116,12 @@ const styles = StyleSheet.create({
   greeting: {
     color: 'white',
     fontSize: 26,
-    fontFamily: 'Poppins-Bold', // Custom font
+    fontFamily: 'Poppins-Bold', 
   },
   subText: {
     color: '#888',
     fontSize: 14,
-    fontFamily: 'Poppins-Regular', // Custom font
+    fontFamily: 'Poppins-Regular', 
   },
   avatar: {
     backgroundColor: smokeColor,
@@ -147,12 +146,12 @@ const styles = StyleSheet.create({
   taskTitle: {
     color: 'white',
     fontSize: 20,
-    fontFamily: 'Poppins-SemiBold', // Custom font
+    fontFamily: 'Poppins-SemiBold', 
   },
   taskDescription: {
     color: '#888',
     fontSize: 14,
-    fontFamily: 'Poppins-Regular', // Custom font
+    fontFamily: 'Poppins-Regular',
     marginTop: 5,
   },
   taskTimeContainer: {
@@ -163,7 +162,7 @@ const styles = StyleSheet.create({
   taskTime: {
     color: 'white',
     fontSize: 14,
-    fontFamily: 'Poppins-Bold', // Custom font
+    fontFamily: 'Poppins-Bold', 
   },
   monthlyReview: {
     marginTop: 30,
@@ -172,7 +171,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: 'white',
     fontSize: 18,
-    fontFamily: 'Poppins-Bold', // Custom font
+    fontFamily: 'Poppins-Bold', 
     marginBottom: 10,
   },
   statsContainer: {
@@ -194,18 +193,18 @@ const styles = StyleSheet.create({
   },
   largeStatCard: {
     height: 130,
-    width: 160, // Increase height for "Done" and "Waiting for Review"
+    width: 160, 
     marginTop: 0
   },
   statNumber: {
     color: 'white',
     fontSize: 24,
-    fontFamily: 'Poppins-Bold', // Custom font
+    fontFamily: 'Poppins-Bold', 
   },
   statLabel: {
     color: 'white',
     fontSize: 14,
-    fontFamily: 'Poppins-Regular', // Custom font
+    fontFamily: 'Poppins-Regular', 
     marginTop: 5,
   },
 });

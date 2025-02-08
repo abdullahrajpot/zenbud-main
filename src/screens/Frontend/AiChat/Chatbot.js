@@ -16,6 +16,7 @@ import Tts from "react-native-tts";
 import ChatBubble from "./ChatBubble";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import LinearGradient from "react-native-linear-gradient";
+import { API_KEY } from '@env';
 
 export default function Chatbot() {
   const [chat, setChat] = useState([]);
@@ -24,7 +25,7 @@ export default function Chatbot() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_KEY = "AIzaSyCYdkV6N2Fq5IyiKWO88eTIHTij18SODwo";
+  // const API_KEY = "AIzaSyCYdkV6N2Fq5IyiKWO88eTIHTij18SODwo";
 
   const handleUserInput = async () => {
     let updatedChat = [
@@ -90,15 +91,10 @@ export default function Chatbot() {
 
   return (
     <ImageBackground
-      source={require('../../../assets/image/ai-bg.jpg')} // Set the background image here
+      source={require('../../../assets/image/ai-bg.jpg')} 
       style={styles.container}
     >
-      {/* <LinearGradient
-        colors={['#000000', '#dd5201']}
-        start={{ x: 1, y: 1 }}
-        end={{ x: 3, y: 0 }}
-        style={styles.gradientContainer}
-      > */}
+     
         <StatusBar translucent backgroundColor="transparent" />
 
         <Image
@@ -126,7 +122,6 @@ export default function Chatbot() {
         </View>
         {loading && <ActivityIndicator style={styles.loading} color="#dd5201" />}
         {error && <Text style={styles.error}>{error}</Text>}
-      {/* </LinearGradient> */}
     </ImageBackground>
   );
 }

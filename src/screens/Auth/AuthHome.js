@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, ImageBackground, Image } from 'react-native';
 import { Button } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';  // Import FontAwesome from react-native-vector-icons
+import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { useNavigation } from '@react-navigation/native';
 
 export default function AuthHome() {
@@ -9,14 +9,13 @@ export default function AuthHome() {
   const navigation= useNavigation();
   return (
     <ImageBackground 
-      source={require("../../assets/image/bghome4.jpg")}  // Provide the correct image path
-      style={styles.imageBackground}  // Apply styles to the background image
+      source={require("../../assets/image/bghome4.jpg")}  
+      style={styles.imageBackground}  
     >
-      {/* Overlay with opacity */}
       <View style={styles.overlay} />
      <View style={styles.TopText}>
       <Image
-          source={require('../../assets/image/zendark.png')} // Replace with your icon image
+          source={require('../../assets/image/zendark.png')} 
           style={styles.icon}
         />
      </View>
@@ -34,13 +33,12 @@ export default function AuthHome() {
         <Button
           mode="contained"
           styles={{paddingHorizontal:'40'}}
-          style={styles.button} // Applying custom button style
+          style={styles.button} 
           onPress={()=>{navigation.navigate("Login")}}
         >
           Sign In
         </Button>
 
-        {/* This is the container that holds the "Create Account" text */}
         <View style={styles.createAccountContainer}>
           <Text style={styles.createAccountText}>Or Create Account    <Icon onPress={()=>{navigation.navigate("Register")}}
  name="arrow-right" size={25} color='#dd5201' /> </Text>
@@ -51,15 +49,14 @@ export default function AuthHome() {
 }
 
 const primaryColor = '#000000';
-// const smokeColor = '#dd5201'; // Light gray (smoke color)
-const smokeColor = '#FF4D00'; // Light gray (smoke color)
+const smokeColor = '#FF4D00'; 
 
 const styles = StyleSheet.create({
   flexContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft:'30' // Centering text horizontally
+    paddingLeft:'30' 
   },
   imageBackground: {
     flex: 1,
@@ -68,9 +65,9 @@ const styles = StyleSheet.create({
     
   },
   overlay: {
-    ...StyleSheet.absoluteFillObject,  // This makes the overlay fill the entire container
-    backgroundColor: primaryColor,  // You can change this to any color
-    opacity: 0.5,  // Set the opacity to your desired level
+    ...StyleSheet.absoluteFillObject,  
+    backgroundColor: primaryColor,  
+    opacity: 0.5, 
   },
   bottomView: {
     backgroundColor: 'black',
@@ -78,10 +75,10 @@ const styles = StyleSheet.create({
     height: '40%',
     paddingHorizontal: '8%',
     borderTopRightRadius: 70,
-    justifyContent: 'center', // Centering content vertically
+    justifyContent: 'center',
   },
   button: {
-    backgroundColor: smokeColor, // Set the background color to smoke (light gray)
+    backgroundColor: smokeColor, 
     marginTop: 30,
     paddingVertical: 6,
     borderRadius: 10,
@@ -99,13 +96,12 @@ const styles = StyleSheet.create({
     opacity: 1,
   },
   icon: {
-    width: 160, // Adjust size as needed
+    width: 160, 
     height: 80,
   },
   createAccountText: {
     fontSize: 16,
     color: 'gray',
     fontStyle:'italic'
-    // fontWeight: 'bold',
   },
 });
