@@ -25,7 +25,6 @@ export default function Chatbot() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [error, setError] = useState(null);
 
-  // const API_KEY = "AIzaSyCYdkV6N2Fq5IyiKWO88eTIHTij18SODwo";
 
   const handleUserInput = async () => {
     let updatedChat = [
